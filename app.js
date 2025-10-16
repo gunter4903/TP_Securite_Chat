@@ -8,7 +8,7 @@ const path = require('path');
 const pool = require('./scripts/mysql');
 
 const authRoutes = require('./routes/authRoute');
-// const catRoutes = require('./routes/cats');
+const listCatRoute = require('./routes/listCatRoute');
 const app = express();
 
 app.use(express.json());
@@ -45,13 +45,17 @@ app.use(session({
 
 app.use(csurf({ cookie: false }));
 
+console.log("dbezjbfhzebfjezbf");
+const listCatModel = require('./models/listCatModel');
+console.log(listCatModel.getCats());
+
 app.use((req, res, next) => {
     res.locals.csrfToken = req.csrfToken ? req.csrfToken() : null;
     next();
 });
 
 app.use('/auth', authRoutes);
-// app.use('/cats', catRoutes);
+app.use('/listingCats', listCatRoute);
 
 app.use((err, req, res, next) => {
     if (err.code === 'EBADCSRFTOKEN') {
