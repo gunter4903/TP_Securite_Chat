@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CatN’Book – Réservation de Chats</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/616/616408.png">
+</head>
+<body class="bg-amber-50 text-stone-800 min-h-screen flex flex-col">
+
+<nav class="bg-white shadow-md py-4 px-6 flex justify-between items-center sticky top-0 z-10">
+    <div class="flex items-center space-x-3">
+        <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="logo chat" class="w-8 h-8">
+        <span class="font-semibold text-xl text-amber-700">CatN’Book</span>
+    </div>
+
+    <div id="nav-links" class="space-x-4">
+    </div>
+</nav>
+
+<section class="flex flex-col md:flex-row items-center justify-between px-8 py-16 md:px-20">
+    <div class="max-w-xl mb-10 md:mb-0">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-amber-800 mb-4">
+            Trouvez le chat parfait pour vos moments de détente 🐾
+        </h1>
+        <p class="text-lg text-stone-600 mb-6">
+            CatN’Book est la première plateforme de <strong>réservation de chats</strong> pour des séances de ronronthérapie,
+            des événements félins ou simplement un moment doux à la maison.
+        </p>
+        <a href="/auth/register"
+           class="bg-amber-700 text-white px-6 py-3 rounded-lg hover:bg-amber-800 transition-all shadow">
+            Commencer maintenant
+        </a>
+    </div>
+
+    <div class="md:w-1/2 flex justify-center">
+        <img src="https://cdn.pixabay.com/photo/2017/11/09/21/41/cat-2934720_1280.png"
+             alt="Chat mignon"
+             class="w-80 md:w-96 animate-bounce-slow drop-shadow-lg">
+    </div>
+</section>
+
+<section class="bg-white py-12 px-8 md:px-20 text-center">
+    <h2 class="text-3xl font-bold text-amber-700 mb-8">Pourquoi choisir CatN’Book ?</h2>
+    <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-amber-100 p-6 rounded-xl shadow hover:shadow-md transition">
+            <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="mx-auto w-14 mb-4" alt="">
+            <h3 class="font-semibold text-lg mb-2">Des chats adorables</h3>
+            <p>Nos compagnons félins sont soigneusement sélectionnés pour leur douceur et leur sociabilité.</p>
+        </div>
+        <div class="bg-amber-100 p-6 rounded-xl shadow hover:shadow-md transition">
+            <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="mx-auto w-14 mb-4" alt="">
+            <h3 class="font-semibold text-lg mb-2">Réservation simple</h3>
+            <p>Choisissez votre chat, votre créneau et profitez d’un moment de bonheur instantané.</p>
+        </div>
+        <div class="bg-amber-100 p-6 rounded-xl shadow hover:shadow-md transition">
+            <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" class="mx-auto w-14 mb-4" alt="">
+            <h3 class="font-semibold text-lg mb-2">Soutien animal</h3>
+            <p>Une partie de chaque réservation aide à financer les refuges et associations félines locales.</p>
+        </div>
+    </div>
+</section>
+
+<footer class="mt-auto bg-stone-800 text-stone-200 py-6 text-center text-sm">
+    © 2025 CatN’Book – Tous droits réservés 🐾
+</footer>
+
+<script>
+    const isLoggedIn = sessionStorage.getItem('userLogged') === 'true';
+    const nav = document.getElementById('nav-links');
+
+    if (isLoggedIn) {
+        nav.innerHTML = `
+        <a href="/catalogue" class="hover:text-amber-700 font-medium">Catalogue</a>
+        <a href="/profil" class="hover:text-amber-700 font-medium">Mon profil</a>
+        <button id="logoutBtn" class="bg-amber-700 text-white px-3 py-1 rounded hover:bg-amber-800">Déconnexion</button>
+      `;
+    } else {
+        nav.innerHTML = `
+        <a href="/auth/login" class="hover:text-amber-700 font-medium">Connexion</a>
+        <a href="/auth/register" class="bg-amber-700 text-white px-3 py-1 rounded hover:bg-amber-800">Inscription</a>
+      `;
+    }
+    document.addEventListener('click', e => {
+        if (e.target.id === 'logoutBtn') {
+            sessionStorage.removeItem('userLogged');
+            location.reload();
+        }
+    });
+</script>
+
+<style>
+    @keyframes bounce-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+    .animate-bounce-slow {
+        animation: bounce-slow 3s infinite;
+    }
+</style>
+
+</body>
+</html>
