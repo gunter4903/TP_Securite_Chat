@@ -66,29 +66,10 @@
     © 2025 CatN’Book – Tous droits réservés 🐾
 </footer>
 
-<script>
-    const isLoggedIn = sessionStorage.getItem('userLogged') === 'true';
-    const nav = document.getElementById('nav-links');
+<script src="/assets/js/navbar.js"></script>
 
-    if (isLoggedIn) {
-        nav.innerHTML = `
-        <a href="/catalogue" class="hover:text-amber-700 font-medium">Catalogue</a>
-        <a href="/profil" class="hover:text-amber-700 font-medium">Mon profil</a>
-        <button id="logoutBtn" class="bg-amber-700 text-white px-3 py-1 rounded hover:bg-amber-800">Déconnexion</button>
-      `;
-    } else {
-        nav.innerHTML = `
-        <a href="/auth/login" class="hover:text-amber-700 font-medium">Connexion</a>
-        <a href="/auth/register" class="bg-amber-700 text-white px-3 py-1 rounded hover:bg-amber-800">Inscription</a>
-      `;
-    }
-    document.addEventListener('click', e => {
-        if (e.target.id === 'logoutBtn') {
-            sessionStorage.removeItem('userLogged');
-            location.reload();
-        }
-    });
-</script>
+
+
 
 <style>
     @keyframes bounce-slow {

@@ -23,10 +23,16 @@ router.post('/register',
     authController.register
 );
 
-router.post('/login', loginLimiter,
-    [body('email').isEmail().normalizeEmail(), body('password').exists()],
-    authController.login
-);
+router.post('/login', loginLimiter, [body('email').isEmail().normalizeEmail(), body('password').exists()], authController.login);
+
+router.get('/status', (req, res) => {
+    if (req.session.user) {
+        res.json({ loggedIn: true, user: req.session.user });
+    } else {
+        res.json({ loggedIn: false });
+    }
+});
+
 
 router.post('/logout', authController.logout);
 
