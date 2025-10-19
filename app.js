@@ -49,9 +49,7 @@ app.use(
 
 app.use(csurf({ cookie: false }));
 
-console.log("dbezjbfhzebfjezbf");
 const listCatModel = require('./models/listCatModel');
-console.log(listCatModel.getCats());
 
 app.use((req, res, next) => {
     res.locals.csrfToken = req.csrfToken ? req.csrfToken() : null;
@@ -59,7 +57,7 @@ app.use((req, res, next) => {
 });
 
 app.use('/auth', authRoutes);
-app.use('/listingCats', listCatRoute);
+app.use('/', listCatRoute);
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
@@ -83,6 +81,9 @@ app.get('/auth/register', (req, res) => {
     });
 });
 
+app.get('/listingCatsPage', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'listingCats.html'));
+})
 
 app.use(express.static(path.join(__dirname, 'public')));
 

@@ -2,29 +2,23 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Catalogue de chat</title>
+    <title>Catalogue de Chats</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f0f0; padding: 20px; }
+        h1 { text-align: center; }
+        .catalogue { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .cat { background: white; padding: 15px; border-radius: 8px; width: 200px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .cat img { width: 100%; height: auto; border-radius: 6px; }
+        .cat h2 { margin: 10px 0 5px; font-size: 1.2em; }
+        .cat p { margin: 0; color: #666; }
+    </style>
 </head>
 <body>
-    <div>
-        <img src="" alt="image chat"/>
-        <p>Paupiette, 38 ans</p>
-        <a href="/">Infos</a>
-    </div>
+<h1>Catalogue de Chats</h1>
+<div class="catalogue" id="cats">
 
-    <br></br>
+</div>
 
-    <div>
-        <img src="" alt="image chat"/>
-        <p>Konkonbre, 12 ans</p>
-        <a href="/">Infos</a>
-    </div>
-
-    <br></br>
-
-    <div>
-        <img src="" alt="image chat"/>
-        <p>Pascaline, 58 ans</p>
-        <a href="/">Infos</a>
-    </div>
+<script src="/assets/js/cats.js"></script>
 </body>
 </html>
